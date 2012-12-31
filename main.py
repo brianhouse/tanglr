@@ -2,7 +2,10 @@
 
 import os, tornado, json, random
 from tornado import websocket
-from housepy import config, log, tornado_server, strings
+from housepy import config, log, strings
+# dymamically set port for Heroku
+config['tornado']['port'] = port = int(os.environ.get('PORT', config['tornado']['port']))
+from housepy import tornado_server
 
 class Controller(tornado_server.Handler):
 
