@@ -2,9 +2,7 @@
 
 import os, tornado, json, random
 from tornado import websocket
-from housepy import config, log, tornado_server, process, strings
-
-process.secure_pid(os.path.join(os.path.dirname(__file__), "run"))
+from housepy import config, log, tornado_server, strings
 
 class Controller(tornado_server.Handler):
 
