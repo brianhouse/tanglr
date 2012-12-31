@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
+    <style type="text/css">
+        body {
+            font: 12px monospace;
+            width: 200px;
+            height: 100px;
+            overflow-x: hidden;            
+        }
+        #cookie_holder {
+            width: 5px;
+            height: 5px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <p class='title'>Relation in Time</p>
+
+    <input type="button" id="on_btn" value="Start" />
+    <input type="button" id="off_btn" value="Stop" />
+    <input type="button" id="cancel_btn" value="Cancel" />    
+
+    <iframe id="cookie_holder" src="http://localhost:8888/"></iframe>    
+    
+</body>
+</html>
