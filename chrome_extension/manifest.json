@@ -19,7 +19,8 @@
     "permissions": [
         "tabs",
         "cookies",
-        "http://localhost/"
+        "http://localhost/",
+        "http://www.tanglr.com/"
     ],
     "incognito": "split",
     "manifest_version": 2
