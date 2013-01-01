@@ -1,1 +1,1 @@
-heroku logs
+heroku logs -t
