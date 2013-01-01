@@ -24,16 +24,19 @@ class WebSocket(websocket.WebSocketHandler):
         WebSocket.sockets[user_id] = self
         log.info("--> user_id %s" % user_id)
         available_users = [uid for uid in WebSocket.users.keys() if WebSocket.users[uid] is None]
-        log.debug("--> available users: %s" % available_users)
+        log.info("--> available users: %s" % available_users)
         if len(available_users):
             partner_id = random.choice(available_users)
             WebSocket.users[partner_id] = user_id
             WebSocket.users[user_id] = partner_id
-            log.debug("--> linked with %s" % partner_id)
+            log.info("--> entangled with %s" % partner_id)
+            WebSocket.send(user_id, "entangled")
+            WebSocket.send(partner_id, "entangled")
         else:
             WebSocket.users[user_id] = None
+            log.debug("--> no partner to entangle")
         log.debug("--> users %s" % WebSocket.users)
-        self.send(user_id)
+        WebSocket.send(user_id, user_id)
 
     def on_message(self, data):
         log.info("//////////// WebSocket.on_message %s" % data)
@@ -48,15 +51,15 @@ class WebSocket(websocket.WebSocketHandler):
         if user_id not in WebSocket.users:
             log.warning("--> %s (originator) not in WebSocket.users" % user_id)
             return
-        receiver_id = WebSocket.users[user_id]
-        if receiver_id is None:
-            log.info("--> no receiver")
+        partner_id = WebSocket.users[user_id]
+        if partner_id is None:
+            log.info("--> no partner")
             return
-        if receiver_id not in WebSocket.sockets:
-            log.warning("--> %s (receiver) not in WebSocket.users" % receiver_id)
+        if partner_id not in WebSocket.sockets:
+            log.warning("--> %s (receiver) not in WebSocket.users" % partner_id)
             return
-        WebSocket.sockets[receiver_id].send(url)
-        self.send("OK")
+        WebSocket.send(partner_id, url)
+        WebSocket.send(user_id, "OK")
 
     def on_close(self):
         log.info("//////////// WebSocket.on_close")
@@ -72,12 +75,19 @@ class WebSocket(websocket.WebSocketHandler):
             del WebSocket.users[user_id]
         for uid, partner_id in WebSocket.users.items():
             if partner_id == user_id:
-                WebSocket.users[uid] = None        
+                WebSocket.send(uid, "unentangled")
+                WebSocket.users[uid] = None   
+        log.debug("--> users %s" % WebSocket.users)
         log.info("--> complete")
 
-    def send(self, message):
-        log.info("--> sending [%s]" % message)
-        self.write_message(message)
+    @classmethod
+    def send(cls, user_id, message):
+        socket = WebSocket.sockets[user_id]
+        log.info("--> sending [%s] to %s" % (message, user_id))
+        try:
+            socket.write_message(message)
+        except Exception as e:
+            log.error(log.exc(e))
 
 def main():
     handlers = [

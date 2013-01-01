@@ -9,14 +9,10 @@ http://www.google.com/search?q=felix+gonzalez-torres+clocks&oq=felix+gonzalez-to
 
 ### design
 
-icon, popup
-
-show status: waiting, connected, disconnected
-
+icon
 
 ### tech
 
-users should timeout
 
 
 ### bugs

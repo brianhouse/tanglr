@@ -6,9 +6,9 @@
     <script type="text/javascript" src="popup.js"></script>
     <style type="text/css">
         body {
-            font: 12px monospace;
-            width: 200px;
-            height: 100px;
+            font: 12px helvetica, sans-serif;
+            width: 175px;
+            height: 105px;
             overflow-x: hidden;            
         }
         #cookie_holder {
@@ -16,17 +16,32 @@
             height: 5px;
             border: none;
         }
+        #title {
+            font-size: 24px;
+        }
+        #cancel_holder {
+            text-align: right;
+        }
+        #cancel_btn {
+            color: black;
+            text-decoration: none;
+        }
+        hr {
+            border: none;
+            border-bottom: 1px solid #999;
+        }
     </style>
 </head>
 <body>
-    
-    <p class='title'>Relation in Time</p>
-
-    <input type="button" id="on_btn" value="Start" />
+    <div id="cancel_holder"><a id="cancel_btn" href="#">close</a></div>
+    <span id='title'>TANGLR</span><br />
+    <hr />
+    <span id='status'>Not connected</span><br />
+    <br />
+    <input type="button" id="on_btn" value="Entangle" />
     <input type="button" id="off_btn" value="Stop" />
-    <input type="button" id="cancel_btn" value="Cancel" />    
 
-    <iframe id="cookie_holder" src="http://localhost:8888/"></iframe>    
+    <iframe id="cookie_holder" src="http://localhost:5555/"></iframe>    
     
 </body>
 </html>

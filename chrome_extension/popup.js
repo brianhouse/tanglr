@@ -14,15 +14,19 @@ function updateButton () {
 function turnOn () {
     background.console.log("popup.turnOn");
     background.turnOn();
-    updateButton();          
-    window.close();
+    updateButton();     
+    background.status = "Waiting for a partner...";
+    $('#status').html(background.status);             
+    // setTimeout(window.close, 2000);
 }
 
 function turnOff () {   
     background.console.log("popup.turnOff");    
     background.turnOff();
     updateButton();
-    window.close();
+    background.status = "Not entangled.";
+    $('#status').html(background.status);             
+    // setTimeout(window.close, 2000);
 }        
 
 function cancel () {
@@ -35,4 +39,5 @@ $(document).ready(function() {
     $('#on_btn').click(turnOn);
     $('#off_btn').click(turnOff);
     $('#cancel_btn').click(cancel);
+    $('#status').html(background.status);
 });        

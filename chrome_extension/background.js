@@ -1,4 +1,5 @@
-var SERVER = "localhost:8888";
+var SERVER = "localhost:5000";
+var status = "Not entangled.";
 var ws = null;
 var active = false;
 var current_url = "NONE";
@@ -6,9 +7,8 @@ var user_id = null;
 
 function turnOn () {
     console.log("background.turnOn");  
-
     ws = new WebSocket("ws://" + SERVER + "/websocket");
-
+    active = true;
     ws.onmessage = function (evt) {
         message = evt.data;
         console.log("--> received " + message);
@@ -22,15 +22,19 @@ function turnOn () {
                         current_url = url;
                     }
                 }
-            });                                     
+            });  
+        } else if (message == "entangled") {                                   
+            console.log("entangled");
+            status = "Entangled!";
+        } else if (message == "unentangled") {                                   
+            console.log("unentangled");
+            status = "Waiting for partner...";
         } else if (message != "OK") {
             user_id = message;
             console.log("user_id is " + user_id);
-            active = true;
             checkUrl();
         }
     };
-
 }
 
 function turnOff () {
@@ -44,11 +48,8 @@ function turnOff () {
 }
 
 function checkUrl () {
-
     if (!active) return;
-
     console.log("background.checkUrl");  
-
     chrome.windows.getCurrent(function (window) {
         if (window == null || !window.focused) {
             console.log('(using other application)');
@@ -70,13 +71,14 @@ function checkUrl () {
                 }
             });                        
         }
-    });
-    
+    });    
 }
 
 function postUrl () {
     console.log("background.postUrl " + current_url);
-    ws.send('{"user_id": "' + user_id + '", "url": "' + current_url + '"}');
+    if (ws != null) {
+        ws.send('{"user_id": "' + user_id + '", "url": "' + current_url + '"}');
+    }
 }
 
 chrome.tabs.onSelectionChanged.addListener(function (tab_id, select_info) {
