@@ -4,6 +4,7 @@ var ws = null;
 var active = false;
 var current_url = "NONE";
 var user_id = null;
+var updateButton = null;
 
 function turnOn () {
     console.log("background.turnOn");  
@@ -26,9 +27,11 @@ function turnOn () {
         } else if (message == "entangled") {                                   
             console.log("entangled");
             status = "Entangled!";
+            updateButton();
         } else if (message == "unentangled") {                                   
             console.log("unentangled");
             status = "Waiting for partner...";
+            updateButton();            
         } else if (message != "OK") {
             user_id = message;
             console.log("user_id is " + user_id);

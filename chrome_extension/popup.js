@@ -2,6 +2,7 @@ var background = chrome.extension.getBackgroundPage();
 
 function updateButton () {
     background.console.log("popup.updateButton " + background.active);
+    $('#status').html(background.status);                 
     if (background.active) {
         $('#on_btn').hide();
         $('#off_btn').show();
@@ -10,22 +11,21 @@ function updateButton () {
         $('#off_btn').hide();
     }
 }
+background.updateButton = updateButton;
         
 function turnOn () {
     background.console.log("popup.turnOn");
     background.turnOn();
-    updateButton();     
     background.status = "Waiting for a partner...";
-    $('#status').html(background.status);             
+    updateButton();     
     // setTimeout(window.close, 2000);
 }
 
 function turnOff () {   
     background.console.log("popup.turnOff");    
     background.turnOff();
+    background.status = "Not entangled.";    
     updateButton();
-    background.status = "Not entangled.";
-    $('#status').html(background.status);             
     // setTimeout(window.close, 2000);
 }        
 
