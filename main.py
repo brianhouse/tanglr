@@ -24,14 +24,14 @@ class WebSocket(websocket.WebSocketHandler):
         log.info("//////////// WebSocket.open")
         user_id = strings.random_string(10)
         WebSocket.sockets[user_id] = self
-        log.info("--> user_id %s" % user_id)
+        log.info("--> new user_id %s" % user_id)
         available_users = [uid for uid in WebSocket.users.keys() if WebSocket.users[uid] is None]
         log.info("--> available users: %s" % available_users)
         if len(available_users):
             partner_id = random.choice(available_users)
             WebSocket.users[partner_id] = user_id
             WebSocket.users[user_id] = partner_id
-            log.info("--> entangled with %s" % partner_id)
+            log.info("--> entangled %s with %s" % (user_id, partner_id))
             WebSocket.send(user_id, "entangled")
             WebSocket.send(partner_id, "entangled")
         else:
@@ -58,8 +58,9 @@ class WebSocket(websocket.WebSocketHandler):
             log.info("--> no partner")
             return
         if partner_id not in WebSocket.sockets:
-            log.warning("--> %s (receiver) not in WebSocket.users" % partner_id)
+            log.warning("--> %s (partner) not in WebSocket.users" % partner_id)
             return
+        log.info("--> %s sent %s to %s" % (user_id, partner_id, url))
         WebSocket.send(partner_id, url)
         WebSocket.send(user_id, "OK")
 
@@ -69,7 +70,7 @@ class WebSocket(websocket.WebSocketHandler):
         for uid, instance in WebSocket.sockets.items():
             if instance == self:
                 user_id = uid
-        log.info("--> user_id %s" % user_id)                
+        log.info("--> closing user_id %s" % user_id)                
         if user_id is None:
             log.warning("socket for %s not found" % user_id)
             return
