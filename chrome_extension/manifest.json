@@ -1,7 +1,7 @@
 {
     "name": "Tanglr",
-    "version": "1.0",
-    "description": "Relation in Time",
+    "version": "1.0.1",
+    "description": "Tanglr anonymously links your browsing with that of another person.",
     "icons": {"16": "icon_16.png", "48": "icon_48.png", "128": "icon_128.png"},
     "background": {
         "persistent": true,
