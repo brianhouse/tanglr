@@ -1,6 +1,6 @@
 {
     "name": "Tanglr",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Tanglr anonymously links your browsing with that of another person.",
     "icons": {"16": "icon_16.png", "48": "icon_48.png", "128": "icon_128.png"},
     "background": {
@@ -19,8 +19,7 @@
     "permissions": [
         "tabs",
         "cookies",
-        "http://localhost/",
-        "http://54.235.200.47/"
+        "http://tanglr.net/"
     ],
     "incognito": "split",
     "manifest_version": 2

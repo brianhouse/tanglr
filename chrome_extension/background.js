@@ -1,4 +1,4 @@
-var SERVER = "54.235.200.47";
+var SERVER = "tanglr.net";
 var status = "Not entangled.";
 var ws = null;
 var active = false;

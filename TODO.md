@@ -9,10 +9,11 @@ http://www.google.com/search?q=felix+gonzalez-torres+clocks&oq=felix+gonzalez-to
 
 ### design
 
-icon
+
 
 ### tech
 
+google analytics
 
 
 ### bugs
