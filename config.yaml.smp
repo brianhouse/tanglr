@@ -1,5 +1,8 @@
+tail: True
+log: False
+
 tornado:
-    port: 8888
+    port: 5000
     log_templates: False
     cookie_secret: bro*MLechluqi_S9ep5lefroe_?@stIa
     xsrf_cookies: True

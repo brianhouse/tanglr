@@ -1,2 +1,4 @@
 *.pyc
 run
+config.yaml
+tanglr.pem
