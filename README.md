@@ -1,28 +1,27 @@
 Tanglr
 ======
 
-en•tan•gle  
+**en•tan•gle**
 /en'taNGgƏl/  
 
-VERB  
+_VERB_  
 1. Cause to become twisted together with or caught in.  
 2. Involve someone in difficulties or complicated circumstances.  
 
 
-Tan•glr  
+**Tan•glr**
 /taNGglƏr/  
 
-NOUN  
+_NOUN_
 1. An [extension](https://chrome.google.com/webstore/detail/tanglr/anhpnanphhhphafiblilbggemelijnpn) for Google Chrome which, when activated, anonymously links you with another person. When you browse, your partner is taken to the same urls. Likewise, when your partner browses, your browser changes to what they're seeing. The two of you have to work it out together.
 
 
-SYNONYMS  
+_SYNONYMS_
 DATA PRIVACY, QUANTUM MECHANICS, RELATION IN TIME, PERFECT LOVERS 
 
 
 
-Copyright/License
------------------
+### Copyright/License
 
 Copyright (c) 2013 Brian House
 
