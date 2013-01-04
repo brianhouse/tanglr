@@ -1,4 +1,4 @@
-tanglr
+Tanglr
 ======
 
 en•tan•gle  
@@ -19,12 +19,10 @@ NOUN
 SYNONYMS  
 DATA PRIVACY, QUANTUM MECHANICS, RELATION IN TIME, PERFECT LOVERS 
 
-[brianhouse.net](http://brianhouse.net)
-
 
 
 Copyright/License
-=================
+-----------------
 
 Copyright (c) 2013 Brian House
 
