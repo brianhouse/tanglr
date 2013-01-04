@@ -5,6 +5,7 @@ var active = false;
 var current_url = "NONE";
 var user_id = null;
 var updateButton = null;
+var posts_enabled = true;
 
 function turnOn () {
     console.log("background.turnOn");  
@@ -21,6 +22,8 @@ function turnOn () {
                     if (current_url != url) {
                         chrome.tabs.update(tab.id, {url: url});
                         current_url = url;
+                        posts_enabled = false;
+                        setTimeout(enablePosts, 3000);
                     }
                 }
             });  
@@ -78,10 +81,15 @@ function checkUrl () {
 }
 
 function postUrl () {
+    if (!posts_enabled) return;
     console.log("background.postUrl " + current_url);
     if (ws != null) {
         ws.send('{"user_id": "' + user_id + '", "url": "' + current_url + '"}');
     }
+}
+
+function enablePosts () {
+    posts_enabled = true;
 }
 
 chrome.tabs.onSelectionChanged.addListener(function (tab_id, select_info) {
