@@ -7,12 +7,14 @@ var user_id = null;
 var updateButton = null;
 var posts_enabled = true;
 
-chrome.browserAction.setIcon({path: "icon_bw.png"});
+chrome.browserAction.setIcon({path: "icon_38_bw.png"});
+chrome.browserAction.setBadgeBackgroundColor({color: [255, 0, 0, 0]});
 
 function turnOn () {
     console.log("background.turnOn");  
     ws = new WebSocket("ws://" + SERVER + "/websocket");
     active = true;
+    chrome.browserAction.setIcon({path: "icon_38_i.png"});
     ws.onmessage = function (evt) {
         message = evt.data;
         console.log("--> received " + message);
@@ -32,6 +34,7 @@ function turnOn () {
         } else if (message == "entangled") {                                   
             console.log("entangled");
             status = "Entangled!";
+            chrome.browserAction.setIcon({path: "icon_38.png"});
             updateButton();
         } else if (message == "unentangled") {                                   
             console.log("unentangled");
@@ -53,6 +56,7 @@ function turnOff () {
     active = false;
     current_url = "NONE";
     user_id = null;    
+    chrome.browserAction.setIcon({path: "icon_38_bw.png"});
 }
 
 function checkUrl () {
