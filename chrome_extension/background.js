@@ -7,6 +7,8 @@ var user_id = null;
 var updateButton = null;
 var posts_enabled = true;
 
+chrome.browserAction.setIcon({path: "icon_bw.png"});
+
 function turnOn () {
     console.log("background.turnOn");  
     ws = new WebSocket("ws://" + SERVER + "/websocket");

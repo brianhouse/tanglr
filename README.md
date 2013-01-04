@@ -1,7 +1,7 @@
 Tanglr
 ======
 
-**en•tan•gle**
+**en•tan•gle**  
 /en'taNGgƏl/  
 
 _VERB_  
@@ -9,7 +9,7 @@ _VERB_
 2. Involve someone in difficulties or complicated circumstances.  
 
 
-**Tan•glr**
+**Tan•glr**  
 /taNGglƏr/  
 
 _NOUN_  

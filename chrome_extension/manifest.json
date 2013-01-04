@@ -1,8 +1,8 @@
 {
     "name": "Tanglr",
-    "version": "1.0.2",
+    "version": "1.0.3",
+    "manifest_version": 2,    
     "description": "Tanglr anonymously links your browsing with that of another person.",
-    "icons": {"16": "icon_16.png", "48": "icon_48.png", "128": "icon_128.png"},
     "background": {
         "persistent": true,
         "page": "background.html"
@@ -13,14 +13,14 @@
         "background.js"
     ],
     "browser_action": {
-        "default_icon": "icon_19.png",
-        "default_popup": "popup.html"    
+        "default_icon": "icon_color.png",
+        "default_popup": "popup.html",
+        "default_title": "Tanglr"
     },
     "permissions": [
         "tabs",
         "cookies",
         "http://tanglr.net/"
     ],
-    "incognito": "split",
-    "manifest_version": 2
+    "incognito": "split"
 }
