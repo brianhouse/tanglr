@@ -1,8 +1,13 @@
 {
-    "name": "Tanglr",
-    "version": "1.0.3",
     "manifest_version": 2,    
+    "name": "Tanglr",
+    "version": "1.0.4",
     "description": "Tanglr anonymously links your browsing with that of another person.",
+    "icons": {
+        "16": "icon_16.png",
+        "48": "icon_48.png",
+        "128": "icon_128.png"
+    },    
     "background": {
         "persistent": true,
         "page": "background.html"
@@ -13,10 +18,6 @@
         "background.js"
     ],
     "browser_action": {
-        "default_icon": {
-            "19": "icon_19.png",
-            "38": "icon_38.png"
-        },
         "default_popup": "popup.html",
         "default_title": "Tanglr"
     },
