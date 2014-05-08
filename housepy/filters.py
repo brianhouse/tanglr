@@ -22,6 +22,9 @@ def zfill(num, digits=3):
 def strip_html(s):
     return strings.strip_html(s)
 
+def strip_quotes(s):
+    return s.replace('"', '')
+
 def linkify(text, extra_params=""):
     from tornado.escape import linkify
     return linkify(text, extra_params=extra_params)    
@@ -35,7 +38,7 @@ def slugify(s):
 def urlencode(s):    
     return urllib.quote(strings.safestr(s))
 
-filters = {'strslice': strslice, 'good_decimal': good_decimal, 'good_datetime': good_datetime, 'good_time': good_time, 'zfill': zfill, 'strip_html': strip_html, 'linkify': linkify, 'nl2br': nl2br, 'slugify': slugify, 'urlencode': urlencode}
+filters = {'strslice': strslice, 'good_decimal': good_decimal, 'good_datetime': good_datetime, 'good_time': good_time, 'zfill': zfill, 'strip_html': strip_html, 'strip_quotes': strip_quotes, 'linkify': linkify, 'nl2br': nl2br, 'slugify': slugify, 'urlencode': urlencode}
 
 
 # built-in filters I like:

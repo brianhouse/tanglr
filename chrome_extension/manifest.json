@@ -15,7 +15,9 @@
     "web_accessible_resources": [
         "jquery-1.8.3.min.js",
         "popup.js",
-        "background.js"
+        "background.js",
+        "icon_38.png",
+        "icon_38_bw.png"                
     ],
     "browser_action": {
         "default_popup": "popup.html",

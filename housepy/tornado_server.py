@@ -143,9 +143,9 @@ class Handler(tornado.web.RequestHandler):
         else:    
             log.info("TEMPLATE %s" % template_name)            
         for key in config: 
-            if type(config[key]) is list and 0 in config[key] and type(config[key][0]) is dict:
-                for param in config[key][0]:
-                    template_values[key + "_" + param] = str(config[key][0][param])
+            if type(config[key]) is dict:
+                for param in config[key]:
+                    template_values[key + "_" + param] = str(config[key][param])
             else:
                 template_values[key] = config[key]                       
         template_values['template_name'] = template_name                         
@@ -241,6 +241,7 @@ class Handler(tornado.web.RequestHandler):
         log.info("--> redirecting to %s" % url)
         tornado.web.RequestHandler.redirect(self, url)                   
 
+authenticated = tornado.web.authenticated
 
 def start(handlers):
     template_dir = os.path.abspath(os.path.join(os.path.dirname(__main__.__file__), "templates"))
