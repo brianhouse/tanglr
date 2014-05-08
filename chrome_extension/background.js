@@ -1,4 +1,4 @@
-var SERVER = "localhost:5000";
+var SERVER = "tanglr.net";
 var status = "Not entangled.";
 var ws = null;
 var active = false;
